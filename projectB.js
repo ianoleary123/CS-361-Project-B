@@ -44,7 +44,7 @@ app.get("/getdata", function(req, res, next){
 // Create user website
 app.get("/user-page", function(req, res){
   var context = {};
-  pool.query('SELECT * FROM shelter', function(err, rows, fields){
+  pool.query('SELECT * FROM shelter AS s LEFT JOIN address AS a ON s.address_id = a.id', function(err, rows, fields){
     if(err){
       next(err);
       return;
@@ -86,7 +86,6 @@ app.post("/add-provider", function(req, res){
 	    // Adds the value to the database
   	    pool.query("INSERT INTO shelter (name, bed_total, available, address_id) VALUES (?, ?, ?, ?)",
 		  [body.name, body.bedT, body.bedA, result.insertId], function(err) {
-			  console.log(JSON.stringify(err));
 		    if (err != null)
 			  res.send(JSON.stringify({"no_error": "false"}));
 		    else
