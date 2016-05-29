@@ -26,4 +26,8 @@ Compelete provider update information page (MULTIPLE TASKS)
 Add Address
 	Display address input on the provider page's create form PASSED
 	Display address input on the provider page's update form PASSED
-	Client submits address feild data to the server 
+	Client submits address feild data to the server PASSED
+	Server adds 'create' address data to the database 
+		ISSUE: forget include the state 
+		Add STATE to html and provider.js 
+		
