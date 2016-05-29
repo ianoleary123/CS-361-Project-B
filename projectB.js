@@ -83,10 +83,10 @@ app.post("/add-provider", function(req, res){
       if (err != null)
         res.send(JSON.stringify({"no_error": "false"}));
       else {
-		console.log(JSON.stringify(result));
 	    // Adds the value to the database
-  	    pool.query("INSERT INTO shelter (name, bed_total, available) VALUES (?, ?, ?)",
-		  [body.name, body.bedT, body.bedA], function(err) {
+  	    pool.query("INSERT INTO shelter (name, bed_total, available, address_id) VALUES (?, ?, ?, ?)",
+		  [body.name, body.bedT, body.bedA, result.insertId], function(err) {
+			  console.log(JSON.stringify(err));
 		    if (err != null)
 			  res.send(JSON.stringify({"no_error": "false"}));
 		    else
