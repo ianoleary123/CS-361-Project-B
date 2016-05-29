@@ -84,8 +84,8 @@ document.getElementById('submitUpdate').addEventListener("click", function(event
 		unitNo: document.getElementById('updateUnitNo').value,
 		streetNo: document.getElementById('updateStreetNo').value,
 		streetAddress: document.getElementById('updateStreetAddress').value,
-		city: document.getElementById('updateCity').value)
-		);
+		city: document.getElementById('updateCity').value
+	}));
     // Sends the request
     req.send(JSON.stringify({
         ID: selID,

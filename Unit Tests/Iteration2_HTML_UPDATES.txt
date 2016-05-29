@@ -24,4 +24,6 @@ Compelete provider update information page (MULTIPLE TASKS)
     Leaving blank fields in the UPDATE doesn't delete data PASSED
 
 Add Address
-	Display address input on the provider page's create form
+	Display address input on the provider page's create form PASSED
+	Display address input on the provider page's update form PASSED
+	Client submits address feild data to the server 
