@@ -44,7 +44,7 @@ app.get("/getdata", function(req, res, next){
 // Create user website
 app.get("/user-page", function(req, res){
   var context = {};
-  pool.query('SELECT * FROM shelter', function(err, rows, fields){
+  pool.query('SELECT * FROM shelter AS s LEFT JOIN address AS a ON s.address_id = a.id', function(err, rows, fields){
     if(err){
       next(err);
       return;
@@ -77,14 +77,22 @@ app.post("/add-provider", function(req, res){
   if (body.name == "")
     body.name = null;
 
-  // Adds the value to the database
-  pool.query("INSERT INTO shelter (name, bed_total, available) VALUES (?, ?, ?)",
-    [body.name, body.bedT, body.bedA], function(err) {
+  // Adds the address to the database
+  pool.query("INSERT INTO address (unitNum, street_num, street_name, city, state, zip_code) VALUES (?, ?, ?, ?, ?, ?)",
+    [body.unitNo, body.streetNo, body.streetAddress, body.city, body.state, body.zipCode ], function(err, result) {
       if (err != null)
         res.send(JSON.stringify({"no_error": "false"}));
-      else
-        res.send(JSON.stringify({"no_error": "true"}));
-    });
+      else {
+	    // Adds the value to the database
+  	    pool.query("INSERT INTO shelter (name, bed_total, available, address_id) VALUES (?, ?, ?, ?)",
+		  [body.name, body.bedT, body.bedA, result.insertId], function(err) {
+		    if (err != null)
+			  res.send(JSON.stringify({"no_error": "false"}));
+		    else
+			  res.send(JSON.stringify({"no_error": "true"}));
+		  });		  
+	  }
+	});
 });
 
 // Updates providers to the database
