@@ -1,28 +1,25 @@
 Installing BootStrap
 
     npm install bootstrap PASS
-    npm install boostrap on server -
+    npm install boostrap on server - PASS
     download bootstrap repository and transfer files to current working directory - PASS
     
 Creating Web Pages
     create home page - PASS
-    create user page for beds -
-    create provider page for beds -
+    create user page for beds - PASS
+    create provider page for beds - PASS
     
 Testing Web Pages
-    Put all web pages on a server and make sure they load correctly -
+    Put all web pages on a server and make sure they load correctly - PASS
     
 User-Page specific
-    Make sure the services shown in the list -
-    Make successful POST requests from the database -
-    Make sure the list is up to date -
-    Make sure the list sorted by distance correctly -
-    Make sure the list sorted by available beds correctly -
-    Make sure the user able to order the bed -
+    Make sure the services shown in the list - PASS
+    Make successful POST requests from the database - PASS
+    Make sure the list is up to date - PASS
 	
     
 Provider-Page Specific
-    Make sure the form submits correctly -
-    Make successful POST requests with the form -
-    Successfully update the database -
+    Make sure the form submits correctly - PASS
+    Make successful POST requests with the form - PASS
+    Successfully update the database - PASS
     
