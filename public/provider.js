@@ -29,7 +29,7 @@ document.getElementById('submitCreate').addEventListener("click", function(event
             res_field.innerText = "Error: Provider Not Added\n" +
                 "One of the following has happened:\n" +
                 "**The name field was left blank OR \n" +
-                "**The name was alreadt in the database OR \n" +
+                "**The facility is already in the database OR \n" +
                 "**Their was a server/ database error";
     });
 	
