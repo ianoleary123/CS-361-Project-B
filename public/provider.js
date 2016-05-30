@@ -29,15 +29,21 @@ document.getElementById('submitCreate').addEventListener("click", function(event
             res_field.innerText = "Error: Provider Not Added\n" +
                 "One of the following has happened:\n" +
                 "**The name field was left blank OR \n" +
-                "**The name was alreadt in the database OR \n" +
+                "**The facility is already in the database OR \n" +
                 "**Their was a server/ database error";
     });
-
+	
     // Sends the request
     req.send(JSON.stringify({
         name: document.getElementById('createName').value,
         bedT: document.getElementById('createBedT').value,
-        bedA: document.getElementById('createBedA').value
+        bedA: document.getElementById('createBedA').value,
+		unitNo: document.getElementById('createUnitNo').value,
+		streetNo: document.getElementById('createStreetNo').value,
+		streetAddress: document.getElementById('createStreetAddress').value,
+		city: document.getElementById('createCity').value,
+		state: document.getElementById('createState').value,
+		zipCode: document.getElementById('createZipCode').value
     }));
 });
 
@@ -64,11 +70,17 @@ document.getElementById('submitUpdate').addEventListener("click", function(event
     var dropDown = document.getElementById('updateID')
     var index = dropDown.selectedIndex;
     var selID = dropDown.options[index].value;
-
+	
     // Sends the request
     req.send(JSON.stringify({
         ID: selID,
         bedT: document.getElementById('updateBedT').value,
-        bedA: document.getElementById('updateBedA').value
+        bedA: document.getElementById('updateBedA').value,
+		unitNo: document.getElementById('updateUnitNo').value,
+		streetNo: document.getElementById('updateStreetNo').value,
+		streetAddress: document.getElementById('updateStreetAddress').value,
+		city: document.getElementById('updateCity').value,
+		state: document.getElementById('updateState').value,
+		zipCode: document.getElementById('updateZipCode').value
     }));
 });

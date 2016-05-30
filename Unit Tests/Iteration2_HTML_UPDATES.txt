@@ -22,3 +22,15 @@ Compelete provider update information page (MULTIPLE TASKS)
     Server correctly UPDATES the database PASSED
     Server notifies provider page if successful PASSED
     Leaving blank fields in the UPDATE doesn't delete data PASSED
+
+Add Address
+    	Display address input on the provider page's create form PASSED
+	Display address input on the provider page's update form PASSED
+	Client submits address feild data to the server PASSED
+	Server adds 'create' address data to the database CAN NOT TELL
+		ISSUE: forget include the state 
+		Add STATE to html and provider.js PASSED
+		No MySQL errors PASSED
+		NOTES can not tell until user page is updated
+	
+	

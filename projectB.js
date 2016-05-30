@@ -44,7 +44,7 @@ app.get("/getdata", function(req, res, next){
 // Create user website
 app.get("/user-page", function(req, res){
   var context = {};
-  pool.query('SELECT * FROM shelter', function(err, rows, fields){
+  pool.query('SELECT * FROM shelter AS s LEFT JOIN address AS a ON s.address_id = a.id', function(err, rows, fields){
     if(err){
       next(err);
       return;
@@ -77,14 +77,22 @@ app.post("/add-provider", function(req, res){
   if (body.name == "")
     body.name = null;
 
-  // Adds the value to the database
-  pool.query("INSERT INTO shelter (name, bed_total, available) VALUES (?, ?, ?)",
-    [body.name, body.bedT, body.bedA], function(err) {
+  // Adds the address to the database
+  pool.query("INSERT INTO address (unitNum, street_num, street_name, city, state, zip_code) VALUES (?, ?, ?, ?, ?, ?)",
+    [body.unitNo, body.streetNo, body.streetAddress, body.city, body.state, body.zipCode ], function(err, result) {
       if (err != null)
         res.send(JSON.stringify({"no_error": "false"}));
-      else
-        res.send(JSON.stringify({"no_error": "true"}));
-    });
+      else {
+	    // Adds the value to the database
+  	    pool.query("INSERT INTO shelter (name, bed_total, available, address_id) VALUES (?, ?, ?, ?)",
+		  [body.name, body.bedT, body.bedA, result.insertId], function(err) {
+		    if (err != null)
+			  res.send(JSON.stringify({"no_error": "false"}));
+		    else
+			  res.send(JSON.stringify({"no_error": "true"}));
+		  });		  
+	  }
+	});
 });
 
 // Updates providers to the database
@@ -92,7 +100,7 @@ app.post("/update-provider", function(req, res){
   body = req.body;
 
   // Pulls the old data fromt the database
-  pool.query('SELECT * FROM shelter WHERE id=?', [body.ID], function(err, rows, fields){
+  pool.query('SELECT * FROM shelter AS s LEFT JOIN address AS a ON s.address_id = a.id WHERE s.id = ?', [body.ID], function(err, rows, fields){
     if(err){
       next(err);
       return;
@@ -103,14 +111,36 @@ app.post("/update-provider", function(req, res){
       body.bedT = rows[0].bed_total;
     if (body.bedA == "")
       body.bedA = rows[0].available;
+    if (body.unitNo == "")
+      body.unitNo = rows[0].unitNum;
+    if (body.streetNo == "")
+      body.streetNo = rows[0].street_num;
+    if (body.streetAddress == "")
+      body.streetAddress = rows[0].street_name;
+    if (body.city == "")
+      body.city = rows[0].city;
+    if (body.state == "")
+      body.state = rows[0].state;
+    if (body.zipCode == "")
+      body.zipCode = rows[0].zip_code;
+
+    // Saves the address id
+    var address_id = rows[0].address_id;
 
     // Updates the data
     pool.query("UPDATE shelter SET bed_total=?, available=? WHERE id=?",
       [body.bedT, body.bedA, body.ID], function(err) {
         if (err != null)
           res.send(JSON.stringify({"no_error": "false"}));
-        else
-          res.send(JSON.stringify({"no_error": "true"}));
+        else {
+          pool.query("UPDATE address SET unitNum=?, street_num=?, street_name=?, city=?, state=?, zip_code=? WHERE id=?",
+            [body.unitNo, body.streetNo, body.streetAddress, body.city, body.state, body.zipCode, address_id], function(err){
+              if (err != null)
+                res.send(JSON.stringify({"no_error": "false"}));
+              else
+                res.send(JSON.stringify({"no_error": "true"}));
+            });
+        }
       });
   });
 });
