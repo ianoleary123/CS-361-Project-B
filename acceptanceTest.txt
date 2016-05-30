@@ -1,0 +1,20 @@
+Acceptance Tests:
+
+Go to the website and have it load: PASSED
+
+Click the User Page Button and go to the right page: PASSED
+
+Have a table show up with all the servicer providers on the user page: PASSED
+
+Make sure there aren't any missing providers in the table: PASSED
+
+Have a separate page to go to the provider site: PASSED
+
+Have multiple forms to fill out information: PASSED
+
+Create a new provider with a number of beds: PASSED
+
+Update an existing provider with no errors: PASSED
+
+Make sure you can't insert a new provider when that provider already exists: PASSED
+

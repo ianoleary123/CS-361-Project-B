@@ -1,7 +1,11 @@
 Installing BootStrap
 
     npm install bootstrap PASS
-    npm install boostrap on server - PASS
+    npm install boostrap on server - FAIL
+        host bootstrap stuff on OSU PAGE - PASS
+        We went back and changed everything to handlebars format - FAIL
+            Moved all css files to the public folder, tried again -PASS, FIXED
+            
     download bootstrap repository and transfer files to current working directory - PASS
     
 Creating Web Pages
