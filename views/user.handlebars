@@ -29,6 +29,7 @@
       <td>City</td>
       <td>State</td>
       <td>Zip Code</td>
+      <td>Directions</td>
     </tr>
     {{#results}}
       <tr>
@@ -41,6 +42,7 @@
         <td>{{city}}</td>
         <td>{{state}}</td>
         <td>{{zip_code}}</td>
+        <td><button class="dirButton" value={{id}}>Get Directions</button></td>
       </tr>  
     {{/results}}
   </table>
