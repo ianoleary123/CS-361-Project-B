@@ -1,0 +1,19 @@
+Google Maps Integration
+
+    Get Google Maps embedded on the page - PASSED
+    Successfully pass data to the API - PASSED
+    
+    Get users location through geolocation - PASSED 
+        -Location is way too inaccurate using IP address, so user will have to put in origin manually
+        
+    Create text fields for origin and destination - PASSED
+    Show route from origin to destination - PASSED
+    Make sure Google finds both locations correctly - PASSED
+    
+WebPage Integration
+
+    Create buttons on the user page to get directions - PASSED
+    
+    Have Google Maps embedded below provider table on user page -
+    When clicking a button, pass in the corresponding address to the destination field-
+    Prevent page from reloading once the get requests are finished -

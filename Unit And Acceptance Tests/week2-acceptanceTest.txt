@@ -1,0 +1,13 @@
+Additional Info
+
+    The page loads correctly - PASSED
+    The page lists all the info from the provider - PASSED
+    Providers can easily add more info to be shown - PASSED
+    The page looks nice and is easy to read - PASSED
+    
+Directions
+
+    I can select a location and find it's address-
+    Google correctly finds me when I put in my location -
+    Each provider's directions button will give me a different address -
+    The route on the map shows up on the same screen when I ask for directions -
