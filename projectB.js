@@ -145,6 +145,19 @@ app.post("/update-provider", function(req, res){
   });
 });
 
+// Returns the address for an AJAX request
+app.get("/get-address", function(req, res){
+  pool.query("SELECT street_num, street_name, city, state, zip_code FROM address AS a INNER JOIN shelter AS s ON s.address_id = a.id WHERE s.id = ?",
+    [req.query.id], function(err, rows, fields) {
+      var string;
+      if (err != null)
+        string = "error";
+      else
+        string = rows[0].street_num + " " + rows[0].street_name + " " + rows[0].state + " " + rows[0].zip_code;
+      res.send(string);
+    });
+});
+
 // Create provider website
 app.get("/cover", function(req, res){
   res.status(200);
