@@ -153,13 +153,17 @@ app.get("/get-address", function(req, res){
       if (err != null)
         string = "error";
       else
-        string = rows[0].street_num + " " + rows[0].street_name + " " + rows[0].state + " " + rows[0].zip_code;
+        string = rows[0].street_num + " " + rows[0].street_name + " " + rows[0].city + " " + rows[0].state + " " + rows[0].zip_code;
       res.send(string);
     });
 });
 
-// Create provider website
+// Create cover page
 app.get("/cover", function(req, res){
+  res.status(200);
+  res.render('cover');
+});
+app.get("/", function(req, res){
   res.status(200);
   res.render('cover');
 });
