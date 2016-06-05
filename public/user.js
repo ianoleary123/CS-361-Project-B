@@ -17,9 +17,10 @@ calculateAndDisplayRoute(directionsService, directionsDisplay);
 document.getElementById('start').addEventListener('change', onChangeHandler);
 document.getElementById('end').addEventListener('change', onChangeHandler);
 }
+
 function calculateAndDisplayRoute(directionsService, directionsDisplay) {
 directionsService.route({
-origin: document.getElementById('start').value,
+origin: '2401 Utah Ave S, Seattle, WA 98134',
 destination: document.getElementById('end').value,
 travelMode: google.maps.TravelMode.DRIVING
 }, function(response, status) {
@@ -27,32 +28,6 @@ if (status === google.maps.DirectionsStatus.OK) {
 directionsDisplay.setDirections(response);
 } else {
 window.alert('Directions request failed due to ' + status);
-}
-});
-}
-function geocodeAddress(geocoder, resultsMap) {
-var start = document.getElementById('start').value;
-geocoder.geocode({'address': start}, function(results, status) {
-if (status === google.maps.GeocoderStatus.OK) {
-resultsMap.setCenter(results[0].geometry.location);
-var marker = new google.maps.Marker({
-map: resultsMap,
-position: results[0].geometry.location
-});
-} else {
-alert('Geocode was not successful for the following reason: ' + status);
-}
-});
-var end = document.getElementById('end').value;
-geocoder.geocode({'address': end}, function(results, status) {
-if (status === google.maps.GeocoderStatus.OK) {
-resultsMap.setCenter(results[0].geometry.location);
-var marker = new google.maps.Marker({
-map: resultsMap,
-position: results[0].geometry.location
-});
-} else {
-alert('Geocode was not successful for the following reason: ' + status);
 }
 });
 }
@@ -67,6 +42,7 @@ function directions(var b) {
     req.open("GET", "/get-address", true);
     req.addEventListener("load", function (){
         // Directions code goes here
+
         
     });
     req.send();
