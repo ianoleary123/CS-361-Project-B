@@ -7,7 +7,10 @@ Additional Info
     
 Directions
 
-    I can select a location and find it's address-
-    Google correctly finds me when I put in my location -
-    Each provider's directions button will give me a different address -
-    The route on the map shows up on the same screen when I ask for directions -
+    I can select a location and find it's address- PASSED
+    Google correctly finds me when I put in my location - FAILED
+        -geolocation API for browsers goes by IP address, and is way too general to pinpoint a user. This is meant for kiosks anyways, which will have fixed address
+    Hard code kiosk address - PASSED
+    
+    Each provider's directions button will give me a different address - PASSED
+    The route on the map shows up on the same screen when I ask for directions - PASSED

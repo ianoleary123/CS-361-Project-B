@@ -14,6 +14,6 @@ WebPage Integration
 
     Create buttons on the user page to get directions - PASSED
     
-    Have Google Maps embedded below provider table on user page -
-    When clicking a button, pass in the corresponding address to the destination field-
-    Prevent page from reloading once the get requests are finished -
+    Have Google Maps embedded below provider table on user page - PASSED
+    When clicking a button, pass in the corresponding address to the destination field- PASSED
+    Prevent page from reloading once the get requests are finished - PASSED
